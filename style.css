@@ -97,6 +97,7 @@ nav {
     width: 50px;
     height: 50px;
     cursor: pointer;
+    transition: all 0.3s linear;
 }
 
 .search {
@@ -162,4 +163,60 @@ nav {
     width: 50%;
     font-size: 20px;
     font-weight: bold;
+}
+
+.similarMovie {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px 30px;
+}
+
+.similarCard {
+    background-image: url(./img/film2.jpg);
+    height: 600px;
+    border-radius: 16px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    position: relative;
+    align-items: flex-end;
+}
+
+.similarCard p {
+    width: 100%;
+    color: #fff;
+    background-color: rgba(230, 230, 230, 0.3);
+    font-size: 24px;
+    text-align: center;
+    padding: 20px 40px;
+    border-radius: 0 0 16px 16px;
+}
+
+.similar {
+    background-image: url(./img/favBtn.svg);
+    width: 60px;
+    height: 60px;
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    background-color: rgba(230, 230, 230, 0.3);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 50px;
+    border-radius: 12px;
+    cursor: pointer;
+}
+
+.dark .rounded {
+    background-color: rgba(130, 130, 130, 0.5);
+}
+
+.dark .darkBg {
+    background-color: rgba(100, 100, 100, 0.8);
+}
+
+.dark #themeChange {
+    transform: rotate(180deg);
+    filter: invert(100%);
 }
