@@ -3,6 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="./main.js" defer></script>
     <title>Document</title>
     <link rel="stylesheet" href="./style.css" />
   </head>
@@ -10,8 +11,8 @@
     <header class="rounded">
       <h1>Кинопоиск</h1>
       <nav class="darkBg">
-        <a href="/" class="active">Главная</a>
-        <a href="#">Избранное</a>
+        <a href="./index.html" class="active">Главная</a>
+        <a href="./favorite.html">Избранное</a>
       </nav>
       <img src="./img/themeChange.svg" alt="themeChange" id="themeChange" />
     </header>
@@ -50,16 +51,11 @@
           </div>
         </div>
       </div>
+
+      <div class="movieTitle darkBg">Найдено похожих фильмов: 6</div>
+      <div class="similarMovies darkBg"></div>
+
     </div>
 
-    <div class="movieTitle darkBg">Найдено похожих фильмов: 6</div>
-
-    <div class="similarMovie darkBg">
-      <div class="similarCard">
-        <p></p>
-      </div>
-    </div>
-
-    <script src="./main.js"></script>
   </body>
 </html>

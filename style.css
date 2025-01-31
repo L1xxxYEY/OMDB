@@ -170,9 +170,15 @@ nav {
     font-weight: bold;
 }
 
-.similarMovie {
+.similarMovies {
     display: none;
     grid-template-columns: repeat(4, 1fr);
+    gap: 30px 30px;
+}
+
+.favoriteMovies {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
     gap: 30px 30px;
 }
 
@@ -211,6 +217,10 @@ nav {
     background-size: 50px;
     border-radius: 12px;
     cursor: pointer;
+}
+
+.similar.star {
+    background-color: white;
 }
 
 .dark .rounded {

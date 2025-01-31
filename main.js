@@ -14,8 +14,18 @@ const themeBtn = document.querySelector("#themeChange");
 const searchBtn = document.querySelector("#searchBtn");
 
 //Слушатели событий
-themeBtn.addEventListener("click", themeChange);
-searchBtn.addEventListener("click", findMovie);
+if (themeBtn) {
+  themeBtn.addEventListener("click", themeChange);
+}
+if (search) {
+  searchBtn.addEventListener("click", findMovie);
+}
+window.addEventListener("keydown", function (event) {
+  if (event.key === "Enter") {
+    event.preventDefault();
+    findMovie();
+  }
+});
 
 function themeChange() {
   body.classList.toggle("dark");
@@ -33,9 +43,10 @@ async function findMovie() {
     main.style.display = "block";
     movie.style.display = "none";
     movieTitle[0].style.display = "block";
-    movieTitle[0].innerHTML = "Введите название фильма"
+    movieTitle[0].innerHTML = "Введите название фильма";
   } else {
     showMovie(response);
+    findSimilarMovies();
   }
 }
 
@@ -58,15 +69,94 @@ function showMovie(data) {
     "Actors",
   ];
 
-  movieDesc.innerHTML = ""
-  params.forEach((elem)=>{
+  movieDesc.innerHTML = "";
+  params.forEach((elem) => {
     movieDesc.innerHTML += `
                 <div class="desc">
                   <p>${elem}</p>
                   <p>${data[elem]}</p>
                 </div>
                 `;
-  })
+  });
+}
+
+async function findSimilarMovies() {
+  const data = { apikey: "1b7ff984", s: search.value };
+  const response = await sendRequest("https://www.omdbapi.com", "GET", data);
+  movieTitle[1].style.display = "block";
+  movieTitle[1].innerHTML = `Найдено похожих фильмов: ${response.Search.length}`;
+  showSimilarMovies(response.Search);
+}
+
+function showSimilarMovies(movies) {
+  const similarMovies = document.querySelector(".similarMovies");
+  similarMovies.innerHTML = "";
+  similarMovies.style.display = "grid";
+  for (let i = 0; i < movies.length; i++) {
+    let movie = movies[i];
+    if (movie.Poster != "N/A") {
+      let similarMovie = `
+        <div class="similarCard" style="background-image:url(${movie.Poster})">
+          <div class="similar active" onclick="addSaved(event)" 
+          data-poster="${movie.Poster}" 
+          data-title="${movie.Title}" 
+          data-imdbID="${movie.imdbID}">
+          </div>
+          <p>${movie.Title}</p>
+        </div>`;
+
+      similarMovies.innerHTML += similarMovie;
+    }
+  }
+}
+
+function addSaved(event) {
+  const target = event.currentTarget;
+  const movieDate = {
+    title: target.getAttribute("data-title"),
+    poster: target.getAttribute("data-poster"),
+    imdbID: target.getAttribute("data-imdbID"),
+  };
+
+  let favs = JSON.parse(localStorage.getItem("favs")) || [];
+  let movieIndex = favs.findIndex((movie) => movie.imdbID === movieDate.imdbID);
+
+  if (movieIndex > -1) {
+    favs.splice(movieIndex, 1);
+    target.classList.remove("star");
+  } else {
+    favs.push(movieDate);
+    target.classList.add("star");
+  }
+  localStorage.setItem("favs", JSON.stringify(favs));
+  if (window.location.pathname.includes("favorite.html")) {
+    displayFavorites();
+  }
+}
+
+function displayFavorites() {
+  main.style.display = "block";
+  const favorites = JSON.parse(localStorage.getItem("favs")) || [];
+  const favCards = document.querySelector(".favoriteMovies");
+  favCards.innerHTML = "";
+
+  if (favorites.length === 0) {
+    favCards.innerHTML = "<p>Нет избранных фильмов</p>";
+    return;
+  }
+
+  favorites.forEach((movie) => {
+    let movieCards = `
+        <div class="similarCard" style="background-image:url(${movie.poster})">
+          <div class="similar active" onclick="addSaved(event)" 
+            data-poster="${movie.poster}" 
+            data-title="${movie.title}" 
+            data-imdbID="${movie.imdbID}">
+          </div>
+          <p>${movie.title}</p>
+        </div>`;
+    favCards.innerHTML += movieCards;
+  });
 }
 
 async function sendRequest(url, method, data) {
