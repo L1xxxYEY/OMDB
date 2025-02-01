@@ -16,7 +16,7 @@
 body {
     min-height: 100vh;
     background-image: url(./img/background.jpg);
-    padding: 20px 30px;
+    padding: calc(0.9vw + 6.7px) calc(1.4vw + 10px);
     animation: bgAnimation 1000s infinite linear;
 }
 
@@ -40,7 +40,7 @@ body {
 
 .loader {
     display: none;
-    height: 14px;
+    height: calc(0.6vw + 4.7px);
     --c: no-repeat linear-gradient(#000 0 0);
     background: var(--c), var(--c), #fff;
     background-size: 60% 100%;
@@ -67,59 +67,64 @@ header {
 
 .rounded {
     padding: 5px;
-    margin-bottom: 10px;
-    border-radius: 10px;
+    margin-bottom: calc(0.3vw + 6px);
+    border-radius: calc(0.3vw + 6px);
     background-color: var(--bgRounded);
+}
+
+h1 {
+    font-size: calc(1.6vw + 9.3px);
 }
 
 nav {
     display: flex;
     align-items: center;
-    gap: 10px;
-    padding: 10px;
+    gap: calc(0.3vw + 6px);
+    padding: calc(0.3vw + 6px);
+    font-size: calc(0.6vw + 6.7px);
 }
 
 .darkBg {
     padding: 5px;
-    border-radius: 10px;
+    border-radius: calc(0.3vw + 6px);
     background-color: var(--bgDark);
 }
 
 .active {
     background-color: orange;
     color: white;
-    border-radius: 10px;
-    font-weight: 700;
-    padding: 10px 20px;
+    border-radius: calc(0.3vw + 6px);
+    font-weight: calc(13.9vw + 500px);
+    padding: calc(0.3vw + 6px) calc(0.9vw + 6.7px);
 }
 
 #themeChange {
-    width: 50px;
-    height: 50px;
+    width: calc(1.4vw + 30px);
+    height: calc(1.4vw + 30px);
     cursor: pointer;
     transition: all 0.3s linear;
 }
 
 .search {
     display: flex;
-    gap: 10px;
+    gap: calc(0.6vw + 0.7px);
 }
 
 .search input {
     flex-grow: 1;
     border: none;
     padding: 0 10px;
-    font-size: 18px;
-    border-radius: 10px;
+    font-size: calc(0.6vw + 10px);
+    border-radius: calc(0.3vw + 6px);
     outline: none;
     background-color: rgba(180,180, 180, 0.8);
 }
 
 #searchBtn {
-    font-size: 18px;
+    font-size: calc(0.6vw + 10px);
     cursor: pointer;
     border: none;
-    padding: 10px 20px;
+    padding: calc(0.3vw + 6px) calc(0.9vw + 6.7px);
 }
 
 .main {
@@ -129,22 +134,22 @@ nav {
 .movieTitle {
     display: none;
     text-align: center;
-    font-size: 24px;
-    margin-bottom: 12px;
+    font-size: calc(0.8vw + 12px);
+    margin-bottom: calc(0.6vw + 4px);
 }
 
 .movie {
     display: none;
     justify-content: space-between;
-    gap: 0 12px;
-    margin-bottom: 12px;
+    gap: 0 calc(0.6vw + 4px);
+    margin-bottom: calc(0.6vw + 4px);
 }
 
 .movieImg {
-    width: 400px;
-    height: 600px;
+    width: calc(11.1vw + 240px);
+    height: calc(25.9vw + 226.7px);
     background-image: url(./img/film1.jpg);
-    border-radius: 12px;
+    border-radius: calc(0.6vw + 4px);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -154,38 +159,38 @@ nav {
     flex-grow: 1;
     display: flex;
     flex-direction: column;
-    gap: 12px;
+    gap: calc(0.5vw + 5.3px);
 }
 
 .desc {
     display: flex;
     background-color: rgba(73, 60, 60, 0.1);
-    padding: 12px;
-    border-radius: 12px;
+    padding: calc(0.5vw + 5.3px);
+    border-radius: calc(0.6vw + 4px);
 }
 
 .desc p {
     width: 50%;
-    font-size: 20px;
+    font-size: calc(0.9vw + 6.7px);
     font-weight: bold;
 }
 
 .similarMovies {
     display: none;
     grid-template-columns: repeat(4, 1fr);
-    gap: 30px 30px;
+    gap: calc(1.9vw + 3.3px) calc(1.9vw + 3.3px);
 }
 
 .favoriteMovies {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 30px 30px;
+    gap: calc(1.9vw + 3.3px) calc(1.9vw + 3.3px);
 }
 
 .similarCard {
     background-image: url(./img/film2.jpg);
-    height: 600px;
-    border-radius: 16px;
+    height: calc(25.9vw + 226.7px);
+    border-radius: calc(0.7vw + 5.3px);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
@@ -198,24 +203,24 @@ nav {
     width: 100%;
     color: #fff;
     background-color: rgba(230, 230, 230, 0.3);
-    font-size: 24px;
+    font-size: calc(1vw + 9.3px);
     text-align: center;
-    padding: 20px 40px;
-    border-radius: 0 0 16px 16px;
+    padding: calc(0.9vw + 6.7px) calc(1.9vw + 13.3px);
+    border-radius: 0 0 calc(0.7vw + 5.3px) calc(0.7vw + 5.3px);
 }
 
 .similar {
     background-image: url(./img/favBtn.svg);
-    width: 60px;
-    height: 60px;
+    width: calc(2.8vw + 20px);
+    height: calc(2.8vw + 20px);
     position: absolute;
-    top: 20px;
-    left: 20px;
+    top: calc(1.3vw + 1.3px);
+    left: calc(1.3vw + 1.3px);
     background-color: rgba(230, 230, 230, 0.3);
     background-repeat: no-repeat;
     background-position: center;
-    background-size: 50px;
-    border-radius: 12px;
+    background-size: calc(2.3vw + 16.7px);
+    border-radius: calc(0.6vw + 4px);
     cursor: pointer;
 }
 
@@ -234,4 +239,14 @@ nav {
 .dark #themeChange {
     transform: rotate(180deg);
     filter: invert(100%);
+}
+
+@media (max-width: 660px) {
+    .similarMovies {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .favoriteMovies {
+        grid-template-columns: repeat(2, 1fr);
+    }
 }
